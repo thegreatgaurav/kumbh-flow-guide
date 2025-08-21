@@ -1,16 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import CrowdDashboard from '@/components/CrowdDashboard';
+import HeatMapVisualization from '@/components/HeatMapVisualization';
+import SimulationControl from '@/components/SimulationControl';
+import RiskPrediction from '@/components/RiskPrediction';
+import AIAssistant from '@/components/AIAssistant';
+import Simulation3D from '@/components/3DSimulation';
 import PilgrimageSchedule from '@/components/PilgrimageSchedule';
 import EmergencyInfo from '@/components/EmergencyInfo';
 
 const Index = () => {
+  const [isSimulationRunning, setIsSimulationRunning] = useState(true);
+
+  const handleToggleSimulation = () => {
+    setIsSimulationRunning(!isSimulationRunning);
+  };
+
   return (
-    <div className="min-h-screen">
-      <HeroSection />
-      <CrowdDashboard />
-      <PilgrimageSchedule />
-      <EmergencyInfo />
+    <div className="min-h-screen bg-background">
+      <Navigation 
+        isSimulationRunning={isSimulationRunning}
+        onToggleSimulation={handleToggleSimulation}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <Tabs defaultValue="overview" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-6">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="simulation">Simulation</TabsTrigger>
+            <TabsTrigger value="heatmap">Heat Map</TabsTrigger>
+            <TabsTrigger value="prediction">AI Prediction</TabsTrigger>
+            <TabsTrigger value="assistant">AI Assistant</TabsTrigger>
+            <TabsTrigger value="emergency">Emergency</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-8">
+            <HeroSection />
+            <CrowdDashboard />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Simulation3D />
+              <AIAssistant />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="simulation" className="space-y-6">
+            <SimulationControl 
+              isRunning={isSimulationRunning}
+              onToggle={handleToggleSimulation}
+            />
+            <Simulation3D />
+          </TabsContent>
+
+          <TabsContent value="heatmap">
+            <HeatMapVisualization />
+          </TabsContent>
+
+          <TabsContent value="prediction">
+            <RiskPrediction />
+          </TabsContent>
+
+          <TabsContent value="assistant">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <AIAssistant />
+              <div className="space-y-6">
+                <RiskPrediction />
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="emergency" className="space-y-6">
+            <EmergencyInfo />
+            <PilgrimageSchedule />
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };
