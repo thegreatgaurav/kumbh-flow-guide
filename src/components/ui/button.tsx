@@ -18,6 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        sacred: "bg-gradient-to-r from-kumbh-saffron to-kumbh-deep-saffron text-white hover:shadow-lg hover:shadow-kumbh-saffron/25 transition-all duration-300",
+        spiritual: "bg-kumbh-spiritual-blue text-white hover:bg-kumbh-river-blue transition-colors duration-300",
+        golden: "bg-gradient-to-r from-kumbh-gold to-kumbh-saffron text-kumbh-spiritual-blue hover:shadow-lg hover:shadow-kumbh-gold/30 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

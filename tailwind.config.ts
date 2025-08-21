@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				kumbh: {
+					saffron: 'hsl(var(--kumbh-saffron))',
+					'deep-saffron': 'hsl(var(--kumbh-deep-saffron))',
+					gold: 'hsl(var(--kumbh-gold))',
+					'spiritual-blue': 'hsl(var(--kumbh-spiritual-blue))',
+					'river-blue': 'hsl(var(--kumbh-river-blue))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
