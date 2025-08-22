@@ -13,9 +13,14 @@ import EmergencyInfo from '@/components/EmergencyInfo';
 
 const Index = () => {
   const [isSimulationRunning, setIsSimulationRunning] = useState(true);
+  const [activeTab, setActiveTab] = useState("overview");
 
   const handleToggleSimulation = () => {
     setIsSimulationRunning(!isSimulationRunning);
+  };
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
   };
 
   return (
@@ -23,10 +28,12 @@ const Index = () => {
       <Navigation 
         isSimulationRunning={isSimulationRunning}
         onToggleSimulation={handleToggleSimulation}
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
       />
       
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <Tabs defaultValue="overview" className="space-y-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="simulation">Simulation</TabsTrigger>

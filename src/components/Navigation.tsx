@@ -16,13 +16,21 @@ import {
 interface NavigationProps {
   isSimulationRunning: boolean;
   onToggleSimulation: () => void;
+  activeTab?: string;
+  onTabChange?: (tab: string) => void;
 }
 
-const Navigation = ({ isSimulationRunning, onToggleSimulation }: NavigationProps) => {
+const Navigation = ({ isSimulationRunning, onToggleSimulation, activeTab, onTabChange }: NavigationProps) => {
   const navigate = useNavigate();
 
   const handleHeaderClick = () => {
     navigate('/');
+  };
+
+  const handleTabClick = (tab: string) => {
+    if (onTabChange) {
+      onTabChange(tab);
+    }
   };
 
   return (
@@ -52,19 +60,39 @@ const Navigation = ({ isSimulationRunning, onToggleSimulation }: NavigationProps
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" size="sm" className="gap-2">
+            <Button 
+              variant={activeTab === "heatmap" ? "default" : "ghost"} 
+              size="sm" 
+              className="gap-2"
+              onClick={() => handleTabClick("heatmap")}
+            >
               <MapPin className="h-4 w-4" />
               Heat Map
             </Button>
-            <Button variant="ghost" size="sm" className="gap-2">
+            <Button 
+              variant={activeTab === "overview" ? "default" : "ghost"} 
+              size="sm" 
+              className="gap-2"
+              onClick={() => handleTabClick("overview")}
+            >
               <Activity className="h-4 w-4" />
               Analytics
             </Button>
-            <Button variant="ghost" size="sm" className="gap-2">
+            <Button 
+              variant={activeTab === "simulation" ? "default" : "ghost"} 
+              size="sm" 
+              className="gap-2"
+              onClick={() => handleTabClick("simulation")}
+            >
               <Users className="h-4 w-4" />
               Crowd Flow
             </Button>
-            <Button variant="ghost" size="sm" className="gap-2">
+            <Button 
+              variant={activeTab === "prediction" ? "default" : "ghost"} 
+              size="sm" 
+              className="gap-2"
+              onClick={() => handleTabClick("prediction")}
+            >
               <Shield className="h-4 w-4" />
               Risk Zones
             </Button>
