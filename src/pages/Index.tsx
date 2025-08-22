@@ -60,9 +60,27 @@ const Index = () => {
             <Simulation3D />
           </TabsContent>
 
-          <TabsContent value="heatmap">
-            <HeatMapVisualization />
-          </TabsContent>
+          <TabsContent value="heatmap" className="space-y-6">
+  {/* This is your original component */}
+  <HeatMapVisualization />
+
+  {/* This new div and iframe adds your map */}
+  <div style={{ 
+      border: '1px solid #27272a', 
+      borderRadius: '8px', 
+      overflow: 'hidden'
+  }}>
+    <iframe
+      title="Kumbh Flow Map"
+      src="/map.html"
+      style={{ 
+        width: '100%', 
+        height: '75vh',
+        border: 'none' 
+      }}
+    ></iframe>
+  </div>
+</TabsContent>
 
           <TabsContent value="prediction">
             <RiskPrediction />
