@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useNavigate } from 'react-router-dom';
 import { 
   Brain, 
   MapPin, 
@@ -18,13 +19,22 @@ interface NavigationProps {
 }
 
 const Navigation = ({ isSimulationRunning, onToggleSimulation }: NavigationProps) => {
+  const navigate = useNavigate();
+
+  const handleHeaderClick = () => {
+    navigate('/');
+  };
+
   return (
     <nav className="bg-card border-b border-border shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Title */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+            <div 
+              className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={handleHeaderClick}
+            >
               <div className="w-10 h-10 bg-gradient-sacred rounded-lg flex items-center justify-center">
                 <Brain className="h-6 w-6 text-white" />
               </div>
