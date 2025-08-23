@@ -10,23 +10,27 @@
     <meta property="og:title" content="kumbh-flow-guide" />
     <meta property="og:description" content="Lovable Generated Project" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta
+      property="og:image"
+      content="https://lovable.dev/opengraph-image-p98pqg.png"
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta
+      name="twitter:image"
+      content="https://lovable.dev/opengraph-image-p98pqg.png"
+    />
+
+    <!-- ✅ Load Botpress inject script globally -->
+    <script
+      src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"
+      defer
+    ></script>
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- 👇 Botpress script here -->
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-    <script>
-      window.botpressWebChat.init({
-        configUrl: "https://files.bpcontent.cloud/2025/08/22/19/20250822194422-TULGRVSG.json"
-      });
-    </script>
   </body>
 </html>
